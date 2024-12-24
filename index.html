@@ -410,44 +410,45 @@
       }
     };
 
-    // Function to display event details when an event card is clicked
-    document.querySelectorAll('.event-card').forEach(card => {
-      card.addEventListener('click', function() {
-        const eventId = this.getAttribute('data-event');
-        const event = eventData[eventId];
+// Function to display event details when an event card is clicked
+document.querySelectorAll('.event-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const eventId = this.getAttribute('data-event');
+    const event = eventData[eventId];
 
-        // Update the event details section
-        const eventDetailsSection = document.getElementById('event-details');
-        eventDetailsSection.innerHTML = `
-          <div class="event-info">
-            <div class="text-placeholder">
-              <div class="placeholder"></div>
-              <h2>${event.title}</h2>
-            </div>
-            <div class="event-content">
-              <p><i class="fas fa-calendar-alt"></i> ${event.date}</p>
-              <p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>
-              <p><i class="fas fa-clock"></i> ${event.time}</p>
-            </div>
-          </div>
-          <div class="register-box">
-            <h3>Register for the Event:</h3>
-            <button class="register-btn">Register</button>
-          </div>
-          <div class="event-description">
-            <h3>About the Event</h3>
-            <p>${event.description}</p>
-            <h3>Objectives</h3>
-            <ul>
-              ${event.objectives.map(objective => <li>${objective}</li>).join('')}
-            </ul>
-          </div>
-        `;
-      });
-    });
+    // Update the event details section
+    const eventDetailsSection = document.getElementById('event-details');
+    eventDetailsSection.innerHTML = `
+      <div class="event-info">
+        <div class="text-placeholder">
+          <div class="placeholder"></div>
+          <h2>${event.title}</h2>
+        </div>
+        <div class="event-content">
+          <p><i class="fas fa-calendar-alt"></i> ${event.date}</p>
+          <p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>
+          <p><i class="fas fa-clock"></i> ${event.time}</p>
+        </div>
+      </div>
+      <div class="register-box">
+        <h3>Register for the Event:</h3>
+        <button class="register-btn">Register</button>
+      </div>
+      <div class="event-description">
+        <h3>About the Event</h3>
+        <p>${event.description}</p>
+        <h3>Objectives</h3>
+        <ul>
+          ${event.objectives.map(objective => `<li>${objective}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  });
+});
 
-    // Default: Show details for the first event on page load
-    document.querySelector('.event-card[data-event="1"]').click();
+// Default: Show details for the first event on page load
+document.querySelector('.event-card[data-event="1"]').click();
+
   </script>
 </body>
 </html>
